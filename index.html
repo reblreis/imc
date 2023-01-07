@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto IMC</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="header"> <!-- div = parágrafo -->
+        <img src="img/logo.png" alt="descrição da imagem para leitores de tela">
+    </div>
+
+    <div class="container"> <!-- container é filho do body -->
+
+        <div class="conteudo"> <!-- container é pai do conteúdo e imagem -->
+            <h1>Calcule seu IMC</h1>
+            <p>IMC é a sigla para Índice de Massa Corporal, parâmetro adotado pela Organização Mundial de Saúde para calcular o peso ideal de cada pessoa.</p>
+        
+            <table>
+                <tr>
+                    <th>IMC</th> <!-- th é o cabeçalho da tabela -->
+                    <th>Classificação</th>
+                </tr>
+
+                <tr>
+                    <td>Menor que 18.5</td>
+                    <td>Magreza</td>
+                </tr>
+
+                <tr>
+                    <td>Entre 18.5 e 24.9</td>
+                    <td>Normal</td>
+                </tr>
+
+                <tr>
+                    <td>Entre 25.0 e 29.9</td>
+                    <td>Sobrepeso</td>
+                </tr>
+
+                <tr>
+                    <td>Maior que 29.9</td>
+                    <td>Obesidade</td>
+                </tr>
+            </table>
+        
+            <div class="imc">
+
+                <div class="form-imc">
+
+                    <form>
+                        
+                        <div>
+                            <label for="altura">Altura:</label> <br>
+                            <input type="text" placeholder="Ex: 1.70" id="altura">
+                        </div>
+
+                        <div>
+                            <label for="peso">Peso:</label> <br>
+                            <input type="text" placeholder="Ex: 60" id="peso">
+                        </div>
+
+                        <button type="button" onclick="calcularImc()">Calcular</button>
+
+                    </form>
+
+                </div>
+                <div class="resultado-imc" id="resultado">
+                    <h2>Seu IMC: <br> <span id="valorImc"></span> </h2>
+                </div>
+
+            </div>
+
+        </div> <!-- Fim da div conteúdo -->
+
+        <div class="imagem">
+            <img src="img/foto.jpg" alt="Imagem de uma nutricionista com uma maçã na mão direita e carregando uma balança na mão esquerda em seu consultório">
+        </div>
+
+    </div> <!-- Fim da div conteiner -->
+
+    <script> // ação de clicar é o javascript, manipula o html
+        //alert("Olá mundo!");
+
+        function calcularImc(){ //imc = peso / altura²
+            //alert("ok");
+
+            var altura = document.getElementById("altura").value;
+            var peso = document.getElementById("peso").value;
+
+            //console.log(altura);
+            //console.log(peso);
+
+            if(altura != "" && peso != ""){
+
+                var imc = peso / (altura * altura);
+                console.log(imc);
+
+                var resultado = document.getElementById("resultado");
+                var valorImc = document.getElementById("valorImc");
+
+                resultado.style.visibility = "visible"; //exibe a div
+                valorImc.innerHTML = imc.toFixed(1); //inserindo um conteúdo no html
+
+                if(imc < 18.5 || imc >= 30){
+                    resultado.style.backgroundColor = "red";
+                }
+
+                else if(imc >= 18.5 && imc <= 24.9){
+                    resultado.style.backgroundColor ="green";
+                }
+
+                else if(imc >= 25 && imc <= 29.9){
+                    resultado.style.backgroundColor = "orange";
+                }
+
+            }else{
+                alert("Preencha os campos!");
+            }
+           
+        }
+
+    </script>
+
+</body>
+</html>
