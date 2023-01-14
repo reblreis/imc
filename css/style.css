@@ -74,11 +74,11 @@ td{
     align-items: center;
     justify-content: center;
     text-align: center;
-    /*visibility: hidden; */ /* escondendo a div */
+    visibility: hidden; /* escondendo a div */
 }
 
 label{
-    font-weight: 400;
+    font-weight: 400px;
 }
 
 input{
@@ -98,4 +98,34 @@ button{
 
 button:hover{
     background-color: #063f74;
+}
+
+#ajuda{
+    visibility: hidden;
+}
+
+/* Media Query */
+@media (max-width: 1100px){ /*para qualquer midia*/
+    
+    .imagem{
+        display: none;
+    }
+}
+
+@media (max-width: 500px){
+
+    .imc{
+        flex-direction: column;
+    }
+
+    .resultado-imc{
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    input{
+        width: 100%;
+        box-sizing: border-box; /*faz com o que as bordas e os paddings não se somem as dimensões */
+    }
+
 }
